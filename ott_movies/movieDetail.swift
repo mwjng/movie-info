@@ -8,10 +8,8 @@
 import Foundation
 
 class MovieDetail: NSObject {
-    var adult: Bool
-    var belongs_to_collection: Any?
     var budget: Int?
-    var genres: [Genre]
+    var genres: [String]?
     var homepage: String?
     var id: Int
     var imdb_id: String?
@@ -20,12 +18,12 @@ class MovieDetail: NSObject {
     var overview: String?
     var popularity: Double
     var poster_path: String?
-    var production_companies: [ProductionCompany]
-    var production_countries: [ProductionCountry]
+    var production_companies: [String]
+    var production_countries: [String]
     var release_date: Date?
     var revenue: Int?
     var runtime: Double?
-    var spoken_languages: [SpokenLanguage]
+    var spoken_languages: [String]
     var status: String?
     var tagline: String?
     var title: String
@@ -33,9 +31,7 @@ class MovieDetail: NSObject {
     var vote_average: Double
     var vote_count: Int
 
-    init(adult: Bool, belongs_to_collection: Any?, budget: Int?, genres: [Genre], homepage: String?, id: Int, imdb_id: String?, original_language: String, original_title: String, overview: String?, popularity: Double, poster_path: String?, production_companies: [ProductionCompany], production_countries: [ProductionCountry], release_date: Date?, revenue: Int?, runtime: Double?, spoken_languages: [SpokenLanguage], status: String?, tagline: String?, title: String, video: Bool, vote_average: Double, vote_count: Int) {
-        self.adult = adult
-        self.belongs_to_collection = belongs_to_collection
+    init(budget: Int?, genres: [String]?, homepage: String?, id: Int, imdb_id: String?, original_language: String, original_title: String, overview: String?, popularity: Double, poster_path: String?, production_companies: [String], production_countries: [String], release_date: Date?, revenue: Int?, runtime: Double?, spoken_languages: [String], status: String?, tagline: String?, title: String, video: Bool, vote_average: Double, vote_count: Int) {
         self.budget = budget
         self.genres = genres
         self.homepage = homepage
@@ -61,25 +57,3 @@ class MovieDetail: NSObject {
         super.init()
     }
 }
-
-struct Genre {
-    var id: Int
-    var name: String
-}
-
-struct ProductionCompany {
-    var id: Int
-    var name: String
-}
-
-struct ProductionCountry {
-    var iso_3166_1: String
-    var name: String
-}
-
-struct SpokenLanguage {
-    var iso_639_1: String
-    var name: String
-}
-
-

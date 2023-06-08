@@ -32,17 +32,42 @@ class MovieGroupViewController: UIViewController {
             let rows = csv.rows
             
             var sortedMovies: [Movie] = []
+                        
             for row in rows {
-                if let title = row["title"], let voteCountString = row["vote_count"], let vote_count = Int(voteCountString) {
-                    let movie = Movie(title: title, vote_count: vote_count)
+                if let title = row["title"],
+                   let voteCountString = row["vote_count"],
+                   let vote_count = Int(voteCountString),
+                   let voteAverageString = row["vote_average"],
+                   let vote_average = Double(voteAverageString) {
+                   
+                    var genreNames: [String] = []
+                    
+                    if let genreString = row["genres"],
+                       let genreData = genreString.data(using: .utf8) {
+                        
+                        do {
+                            if let genreArray = try JSONSerialization.jsonObject(with: genreData, options: []) as? [[String: Any]] {
+                                
+                                for genreDict in genreArray {
+                                    if let name = genreDict["name"] as? String {
+                                        genreNames.append(name)
+                                    }
+                                }
+                            }
+                            
+                        } catch {
+                            print("Error parsing genre data")
+                        }
+                    }
+                    
+                    let movie = Movie(title: title, vote_count: vote_count, vote_average: vote_average, genres: genreNames)
                     sortedMovies.append(movie)
                 }
+
             }
             
             sortedMovies.sort(by: { $0.vote_count > $1.vote_count })
-            
-            movies = Array(sortedMovies.prefix(100))
-            
+            movies = Array(sortedMovies.prefix(20))
             self.movieGroupTableView.reloadData()
             
         } catch {
@@ -60,10 +85,8 @@ extension MovieGroupViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieGroupViewCell", for: indexPath)
         let movie = movies[indexPath.row]
-//        cell.textLabel!.text = "Title: \(movie.title), Vote Count: \(movie.vote_count)"
         cell.textLabel!.text = "\(movie.title)"
         return cell
     }
 }
-
 
