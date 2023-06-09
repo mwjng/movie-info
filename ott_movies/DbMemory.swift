@@ -36,31 +36,30 @@ class DbMemory: Database {
                    let vote_count = Int(voteCountString),
                    let voteAverageString = row["vote_average"],
                    let vote_average = Double(voteAverageString) {
-                   
-                    var genreNames: [String] = []
-                    
-                    if let genreString = row["genres"],
-                       let genreData = genreString.data(using: .utf8) {
-                        do {
-                            print(genreData)
-                            if let genreArray = try JSONSerialization.jsonObject(with: genreData, options: []) as? [[String: String]] {
-                                for genreDict in genreArray {
-                                    if let name = genreDict["name"] {
-                                        genreNames.append(name)
+                                       
+                    if var genreString = row["genres"] {
+                        genreString = genreString.replacingOccurrences(of: "'", with: "\"")
+
+                        if let jsonData = genreString.data(using: .utf8) {
+                            do {
+                                if let jsonArray = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [[String: Any]] {
+                                    var genreNames: [String] = []
+                                    
+                                    for jsonObject in jsonArray {
+                                        if let name = jsonObject["name"] as? String {
+                                            genreNames.append(name)
+                                        }
                                     }
+                                    
+                                    let movie = Movie(title: title, vote_count: vote_count, vote_average: vote_average, genres: genreNames)
+                                    sortedMovies.append(movie)
                                 }
+                            } catch {
+                                print("Error parsing JSON data")
                             }
-                        } catch {
-                            print("Error parsing genre data")
                         }
                     }
-
-
-                    
-                    let movie = Movie(title: title, vote_count: vote_count, vote_average: vote_average, genres: genreNames)
-                    sortedMovies.append(movie)
                 }
-
             }
             
             sortedMovies.sort(by: { $0.vote_count > $1.vote_count })
@@ -84,18 +83,12 @@ class DbMemory: Database {
     
     func queryMoviesByGenre(genre: String) -> [Movie] {
         let filteredMovies = storage.filter { movie in
-            if let genres = movie.genres {
-                return genres.contains(genre)
-            }
-            return false
+            return movie.genres.contains(genre)
         }
 
-        
         let sortedMovies = filteredMovies.sorted { $0.vote_count > $1.vote_count }
         let top20Movies = Array(sortedMovies.prefix(20))
-        
         return top20Movies
     }
 
 }
-

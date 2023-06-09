@@ -11,9 +11,9 @@ class Movie {
     var title: String
     var vote_count: Int
     var vote_average: Double
-    var genres: [String]?
+    var genres: [String]
     
-    init(title: String, vote_count: Int, vote_average: Double, genres: [String]?) {
+    init(title: String, vote_count: Int, vote_average: Double, genres: [String]) {
         self.title = title
         self.vote_count = vote_count
         self.vote_average = vote_average

@@ -17,10 +17,10 @@ class MovieGroupViewController: UIViewController {
         super.viewDidLoad()
         movieGroupTableView.dataSource = self
         dbMemory = DbMemory(parentNotification: nil)
-        queryMoviesByGenre(genre: "Drama")
+        queryGenre(genre: "Action")
     }
     
-    func queryMoviesByGenre(genre: String) {
+    func queryGenre(genre: String) {
         movies = dbMemory.queryMoviesByGenre(genre: genre)
         movieGroupTableView.reloadData()
     }
