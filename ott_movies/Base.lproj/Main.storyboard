@@ -35,20 +35,24 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="g8L-kH-S2C" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="7" id="1nN-x2-CNR"/>
+                            <constraint firstItem="g8L-kH-S2C" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="7" id="78z-RM-nHS"/>
+                            <constraint firstAttribute="trailing" secondItem="g8L-kH-S2C" secondAttribute="trailing" constant="7" id="79t-yW-ciF"/>
                             <constraint firstItem="g8L-kH-S2C" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="7" id="9bN-Xf-oAE"/>
                             <constraint firstItem="g8L-kH-S2C" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DwL-EY-hAu"/>
                             <constraint firstItem="g8L-kH-S2C" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="7" id="Hhx-jc-df8"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="g8L-kH-S2C" secondAttribute="bottom" constant="-7" id="W7p-2c-jZz"/>
+                            <constraint firstItem="g8L-kH-S2C" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="7" id="RGt-0A-ugC"/>
                             <constraint firstItem="g8L-kH-S2C" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="7" id="Xx8-qR-sMn"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="g8L-kH-S2C" secondAttribute="bottom" constant="-7" id="YJv-L9-QfD"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="MovieGroupTableView" destination="g8L-kH-S2C" id="nLT-KZ-Syw"/>
                         <outlet property="movieGroupTableView" destination="g8L-kH-S2C" id="B6m-4s-NjR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="55" y="-34"/>
+            <point key="canvasLocation" x="54.198473282442748" y="-34.507042253521128"/>
         </scene>
     </scenes>
     <resources>
