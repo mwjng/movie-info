@@ -10,7 +10,6 @@
 		0CB57D4F2A2F9A1F006EF06A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB57D4E2A2F9A1F006EF06A /* AppDelegate.swift */; };
 		0CB57D512A2F9A1F006EF06A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB57D502A2F9A1F006EF06A /* SceneDelegate.swift */; };
 		0CB57D532A2F9A1F006EF06A /* MovieGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB57D522A2F9A1F006EF06A /* MovieGroupViewController.swift */; };
-		0CB57D562A2F9A1F006EF06A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CB57D542A2F9A1F006EF06A /* Main.storyboard */; };
 		0CB57D582A2F9A20006EF06A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CB57D572A2F9A20006EF06A /* Assets.xcassets */; };
 		0CB57D5B2A2F9A20006EF06A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CB57D592A2F9A20006EF06A /* LaunchScreen.storyboard */; };
 		0CB57D632A30F340006EF06A /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB57D622A30F340006EF06A /* MovieDetail.swift */; };
@@ -20,6 +19,9 @@
 		0CF8886B2A321A7600207B61 /* movies_metadata.csv in Resources */ = {isa = PBXBuildFile; fileRef = 0CF8886A2A321A7600207B61 /* movies_metadata.csv */; };
 		0CF8886F2A326C3200207B61 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF8886E2A326C3200207B61 /* Database.swift */; };
 		0CF888712A326D4C00207B61 /* DbMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF888702A326D4C00207B61 /* DbMemory.swift */; };
+		0CF888762A347DAD00207B61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CB57D542A2F9A1F006EF06A /* Main.storyboard */; };
+		0CF8887A2A34B4CF00207B61 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF888792A34B4CF00207B61 /* TabBarController.swift */; };
+		0CF8887C2A34B50300207B61 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF8887B2A34B50300207B61 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		0CF8886A2A321A7600207B61 /* movies_metadata.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = movies_metadata.csv; sourceTree = "<group>"; };
 		0CF8886E2A326C3200207B61 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		0CF888702A326D4C00207B61 /* DbMemory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbMemory.swift; sourceTree = "<group>"; };
+		0CF888792A34B4CF00207B61 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		0CF8887B2A34B50300207B61 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,8 @@
 				0CF8886A2A321A7600207B61 /* movies_metadata.csv */,
 				0CF8886E2A326C3200207B61 /* Database.swift */,
 				0CF888702A326D4C00207B61 /* DbMemory.swift */,
+				0CF888792A34B4CF00207B61 /* TabBarController.swift */,
+				0CF8887B2A34B50300207B61 /* SearchViewController.swift */,
 			);
 			path = ott_movies;
 			sourceTree = "<group>";
@@ -152,10 +158,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CF8886B2A321A7600207B61 /* movies_metadata.csv in Resources */,
+				0CF888762A347DAD00207B61 /* Main.storyboard in Resources */,
 				0CB57D5B2A2F9A20006EF06A /* LaunchScreen.storyboard in Resources */,
 				0CB57D582A2F9A20006EF06A /* Assets.xcassets in Resources */,
 				0CF888692A321A7100207B61 /* poster_sample.jpg in Resources */,
-				0CB57D562A2F9A1F006EF06A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,7 +173,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CF8886F2A326C3200207B61 /* Database.swift in Sources */,
+				0CF8887A2A34B4CF00207B61 /* TabBarController.swift in Sources */,
 				0CB57D532A2F9A1F006EF06A /* MovieGroupViewController.swift in Sources */,
+				0CF8887C2A34B50300207B61 /* SearchViewController.swift in Sources */,
 				0CB57D4F2A2F9A1F006EF06A /* AppDelegate.swift in Sources */,
 				0CF888712A326D4C00207B61 /* DbMemory.swift in Sources */,
 				0CB57D632A30F340006EF06A /* MovieDetail.swift in Sources */,
