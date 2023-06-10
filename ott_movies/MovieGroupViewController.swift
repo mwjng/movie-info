@@ -9,10 +9,10 @@ import UIKit
 
 class MovieGroupViewController: UIViewController {
     
-    
     @IBOutlet weak var movieGroupTableView: UITableView!
     var movieGroups: [[Movie]] = []
     var dbMemory: DbMemory!
+    let genres: [String] = ["Action", "Drama", "Comedy", "Thriller", "Adventure"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +24,7 @@ class MovieGroupViewController: UIViewController {
         
     }
     
-    
     func queryGenres() {
-        let genres: [String] = ["Action", "Drama", "Comedy", "Thriller", "Adventure"]
-        
         for genre in genres {
             let movies = dbMemory.queryMoviesByGenre(genre: genre)
             movieGroups.append(movies)
@@ -46,13 +43,17 @@ extension MovieGroupViewController: UITableViewDataSource, UITableViewDelegate {
         return 1
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 300
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "GenreTableViewCell", for: indexPath) as? GenreTableViewCell else {
             return UITableViewCell()
         }
         
-        let movies = movieGroups[indexPath.section]
         cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.section)
+        cell.textLabel!.text = genres[indexPath.section]
         
         return cell
     }
@@ -83,6 +84,7 @@ extension MovieGroupViewController: UICollectionViewDataSource, UICollectionView
 class GenreTableViewCell: UITableViewCell {
     
     @IBOutlet weak var genreCollectionView: UICollectionView!
+    
     var row: Int = 0
     
     override func awakeFromNib() {
@@ -113,4 +115,5 @@ class GenreTableViewCell: UITableViewCell {
 class MovieGroupViewCell: UICollectionViewCell {
     @IBOutlet weak var movieGenreView: UILabel!
 }
+
 
