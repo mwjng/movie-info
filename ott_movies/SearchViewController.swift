@@ -20,6 +20,7 @@ class SearchViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
     }
+
 }
 
 extension SearchViewController: UISearchBarDelegate {
@@ -29,7 +30,6 @@ extension SearchViewController: UISearchBarDelegate {
         }
         
         movies = dbMemory.queryMoviesByTitle(title: searchText) ?? []
-        print(movies)
         
         tableView.reloadData()
     }
@@ -53,10 +53,5 @@ extension SearchViewController: UITableViewDataSource {
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedMovie = movies[indexPath.row]
-        print("Selected Movie: \(selectedMovie.title)")
     }
 }

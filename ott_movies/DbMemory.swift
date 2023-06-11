@@ -64,7 +64,7 @@ class DbMemory: Database {
                                     }
                                 }
                             } catch {
-                                print("Error parsing JSON data")
+                                print(error)
                             }
                         }
                     }
@@ -74,7 +74,7 @@ class DbMemory: Database {
                     dateFormatter.dateFormat = "yyyy-MM-dd"
                     let releaseDate = dateFormatter.date(from: releaseDateString ?? "")
 
-                    var spokenLanguages: [String] = []
+                    var spoken_languages: [String] = []
                     if var spokenLanguagesString = row["spoken_languages"] {
                         spokenLanguagesString = spokenLanguagesString.replacingOccurrences(of: "'", with: "\"")
                         if let jsonData = spokenLanguagesString.data(using: .utf8) {
@@ -82,17 +82,17 @@ class DbMemory: Database {
                                 if let jsonArray = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [[String: Any]] {
                                     for jsonObject in jsonArray {
                                         if let name = jsonObject["name"] as? String {
-                                            spokenLanguages.append(name)
+                                            spoken_languages.append(name)
                                         }
                                     }
                                 }
                             } catch {
-                                print("Error parsing JSON data")
+                                print(error)
                             }
                         }
                     }
                     
-                    var productionCompanies: [String] = []
+                    var production_companies: [String] = []
                     if var productionCompaniesString = row["production_companies"] {
                         productionCompaniesString = productionCompaniesString.replacingOccurrences(of: "'", with: "\"")
                         if let jsonData = productionCompaniesString.data(using: .utf8) {
@@ -100,17 +100,17 @@ class DbMemory: Database {
                                 if let jsonArray = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [[String: Any]] {
                                     for jsonObject in jsonArray {
                                         if let name = jsonObject["name"] as? String {
-                                            productionCompanies.append(name)
+                                            production_companies.append(name)
                                         }
                                     }
                                 }
                             } catch {
-                                print("Error parsing JSON data")
+                                print(error)
                             }
                         }
                     }
                     
-                    var productionCountries: [String] = []
+                    var production_countries: [String] = []
                     if var productionCountriesString = row["production_countries"] {
                         productionCountriesString = productionCountriesString.replacingOccurrences(of: "'", with: "\"")
                         if let jsonData = productionCountriesString.data(using: .utf8) {
@@ -118,17 +118,17 @@ class DbMemory: Database {
                                 if let jsonArray = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [[String: Any]] {
                                     for jsonObject in jsonArray {
                                         if let name = jsonObject["name"] as? String {
-                                            productionCountries.append(name)
+                                            production_countries.append(name)
                                         }
                                     }
                                 }
                             } catch {
-                                print("Error parsing JSON data")
+                                print(error)
                             }
                         }
                     }
                     
-                    let movie = Movie(budget: budget, genres: genres, homepage: homepage, id: id, imdb_id: imdb_id, original_language: original_language, original_title: original_title, overview: overview, popularity: popularity, poster_path: poster_path, production_companies: productionCompanies, production_countries: productionCountries, release_date: releaseDate, revenue: revenue, runtime: runtime, spoken_languages: spokenLanguages, status: status, tagline: tagline, title: title, vote_average: vote_average, vote_count: vote_count)
+                    let movie = Movie(budget: budget, genres: genres, homepage: homepage, id: id, imdb_id: imdb_id, original_language: original_language, original_title: original_title, overview: overview, popularity: popularity, poster_path: poster_path, production_companies: production_companies, production_countries: production_countries, release_date: releaseDate, revenue: revenue, runtime: runtime, spoken_languages: spoken_languages, status: status, tagline: tagline, title: title, vote_average: vote_average, vote_count: vote_count)
                     
                     sortedMovies.append(movie)
                 }
@@ -164,7 +164,6 @@ class DbMemory: Database {
         }
     }
 
-    
     func queryMovie(count: Int) {
         let queriedMovies = Array(storage.prefix(count))
         for movie in queriedMovies {
@@ -184,21 +183,18 @@ class DbMemory: Database {
             return !range.isEmpty
         }
         
-        let sortedMovies = filteredMovies.sorted { $0.vote_count > $1.vote_count }
+        let sortedMovies = filteredMovies.sorted { $0.vote_average > $1.vote_average }
         let findMovies = Array(sortedMovies.prefix(100))
         return findMovies.isEmpty ? nil : findMovies
     }
 
-
-    
     func queryMoviesByGenre(genre: String) -> [Movie] {
         let filteredMovies = storage.filter { movie in
             return movie.genres.contains(genre)
         }
 
-        let sortedMovies = filteredMovies.sorted { $0.vote_count > $1.vote_count }
+        let sortedMovies = filteredMovies.sorted { $0.popularity > $1.popularity }
         let top20Movies = Array(sortedMovies.prefix(20))
         return top20Movies
     }
-
 }

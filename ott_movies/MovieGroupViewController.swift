@@ -23,7 +23,7 @@ class MovieGroupViewController: UIViewController {
         movieGroupTableView.delegate = self
         
     }
-    
+            
     func queryGenres() {
         for genre in genres {
             let movies = dbMemory.queryMoviesByGenre(genre: genre)
@@ -79,6 +79,7 @@ extension MovieGroupViewController: UICollectionViewDataSource, UICollectionView
         let height = collectionView.bounds.height
         return CGSize(width: width, height: height)
     }
+    
 }
 
 class GenreTableViewCell: UITableViewCell {

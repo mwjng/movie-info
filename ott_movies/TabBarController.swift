@@ -14,10 +14,7 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         
         let movieGroupViewController = MovieGroupViewController()
-        
         let searchViewController = SearchViewController()
-        
         self.viewControllers = [movieGroupViewController, searchViewController]
     }
 }
-
