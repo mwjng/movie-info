@@ -43,15 +43,20 @@ extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResult", for: indexPath)
         let movie = movies[indexPath.row]
+        cell.textLabel?.textAlignment = .center
         cell.textLabel?.text = movie.title
+        
         return cell
     }
 }
 
 extension SearchViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedMovie = movies[indexPath.row]
         print("Selected Movie: \(selectedMovie.title)")
     }
 }
-
