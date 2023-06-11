@@ -11,9 +11,7 @@ enum DbAction{
     case Add, Delete, Modify
 }
 
-protocol Database {
-    init(parentNotification: ((Movie?, DbAction) -> Void)?)
-    
+protocol Database {   
     func queryMovie(count: Int)
     func saveChange(movie: Movie, action: DbAction)
 }

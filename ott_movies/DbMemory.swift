@@ -8,12 +8,12 @@ import UIKit
 import SwiftCSV
 
 class DbMemory: Database {
+    static let shared = DbMemory()
     private var storage: [Movie] = []
     private var parentNotification: ((Movie?, DbAction) -> Void)?
     
-    required init(parentNotification: ((Movie?, DbAction) -> Void)?) {
-        self.parentNotification = parentNotification
-        loadMovies()
+    private init() {
+            loadMovies()
     }
     
     private func loadMovies() {
@@ -80,6 +80,21 @@ class DbMemory: Database {
     func saveChange(movie: Movie, action: DbAction) {
             
     }
+    
+    func queryMoviesByTitle(title: String) -> [Movie]? {
+        let filteredMovies = storage.filter { movie in
+            guard let range = movie.title.range(of: title, options: .caseInsensitive) else {
+                return false
+            }
+            return !range.isEmpty
+        }
+        
+        let sortedMovies = filteredMovies.sorted { $0.vote_count > $1.vote_count }
+        let findMovies = Array(sortedMovies.prefix(100))
+        return findMovies.isEmpty ? nil : findMovies
+    }
+
+
     
     func queryMoviesByGenre(genre: String) -> [Movie] {
         let filteredMovies = storage.filter { movie in

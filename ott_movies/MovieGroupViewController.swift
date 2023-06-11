@@ -11,12 +11,12 @@ class MovieGroupViewController: UIViewController {
     
     @IBOutlet weak var movieGroupTableView: UITableView!
     var movieGroups: [[Movie]] = []
-    var dbMemory: DbMemory!
+    var dbMemory = DbMemory.shared
     let genres: [String] = ["Action", "Drama", "Comedy", "Thriller", "Adventure"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dbMemory = DbMemory(parentNotification: nil)
+        
         queryGenres()
         
         movieGroupTableView.dataSource = self
@@ -115,5 +115,3 @@ class GenreTableViewCell: UITableViewCell {
 class MovieGroupViewCell: UICollectionViewCell {
     @IBOutlet weak var movieGenreView: UILabel!
 }
-
-

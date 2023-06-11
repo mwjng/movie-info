@@ -27,31 +27,60 @@
             </objects>
             <point key="canvasLocation" x="-1506" y="-213"/>
         </scene>
-        <!--View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="ZlQ-iX-i6t">
             <objects>
-                <viewController id="z41-Vw-7yY" sceneMemberID="viewController">
+                <viewController id="z41-Vw-7yY" customClass="SearchViewController" customModule="ott_movies" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V8P-on-Gat">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nle-KF-zQG">
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Nle-KF-zQG">
                                 <rect key="frame" x="0.0" y="86" width="393" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="wxk-f7-irj"/>
+                                </constraints>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="z41-Vw-7yY" id="dZh-0c-f5f"/>
                                 </connections>
                             </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6dF-j4-awZ">
+                                <rect key="frame" x="0.0" y="130" width="393" height="639"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResult" id="NP4-sZ-ab0">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NP4-sZ-ab0" id="Z7E-mY-rev">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5aA-RK-h2R"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5aA-RK-h2R" firstAttribute="bottom" secondItem="6dF-j4-awZ" secondAttribute="bottom" id="4Tm-5X-0cx"/>
+                            <constraint firstItem="Nle-KF-zQG" firstAttribute="trailing" secondItem="6dF-j4-awZ" secondAttribute="trailing" id="9v2-58-k2r"/>
+                            <constraint firstItem="6dF-j4-awZ" firstAttribute="leading" secondItem="5aA-RK-h2R" secondAttribute="leading" id="M8Q-Bm-pMg"/>
+                            <constraint firstItem="6dF-j4-awZ" firstAttribute="top" secondItem="Nle-KF-zQG" secondAttribute="bottom" id="V7u-0e-Bwy"/>
+                            <constraint firstItem="Nle-KF-zQG" firstAttribute="leading" secondItem="6dF-j4-awZ" secondAttribute="leading" id="c5C-PV-bnb"/>
+                            <constraint firstItem="5aA-RK-h2R" firstAttribute="trailing" secondItem="6dF-j4-awZ" secondAttribute="trailing" id="npH-xe-KXm"/>
+                            <constraint firstItem="Nle-KF-zQG" firstAttribute="top" secondItem="5aA-RK-h2R" secondAttribute="top" constant="27" id="xUo-MS-B9P"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="search" id="ryX-Vn-XGw"/>
+                    <connections>
+                        <outlet property="searchBar" destination="Nle-KF-zQG" id="lVA-1s-XIR"/>
+                        <outlet property="tableView" destination="6dF-j4-awZ" id="mGl-fP-g1a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E6L-Qt-Btu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-793" y="202"/>
+            <point key="canvasLocation" x="-731" y="206"/>
         </scene>
         <!--Movie Group View Controller-->
         <scene sceneID="tne-QT-ifu">
