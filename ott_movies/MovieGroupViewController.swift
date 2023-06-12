@@ -9,6 +9,7 @@ import UIKit
 
 class MovieGroupViewController: UIViewController {
     
+    @IBOutlet weak var sortSegment: UISegmentedControl!
     @IBOutlet weak var movieGroupTableView: UITableView!
     var movieGroups: [[Movie]] = []
     var dbMemory = DbMemory.shared
@@ -21,12 +22,55 @@ class MovieGroupViewController: UIViewController {
         
         movieGroupTableView.dataSource = self
         movieGroupTableView.delegate = self
-        
+        sortSegment.addTarget(self, action: #selector(sortSegmentValueChanged(_:)), for: .valueChanged)
+    }
+    
+    @objc func sortSegmentValueChanged(_ sender: UISegmentedControl) {
+            sortMoviesBySelectedSegment()
+    }
+    
+    func sortMoviesBySelectedSegment() {
+            let selectedSegmentIndex = sortSegment.selectedSegmentIndex
+            
+            switch selectedSegmentIndex {
+            case 0:
+                // popularity
+                movieGroups.removeAll()
+                queryGenres()
+            case 1:
+                // vote_count
+                movieGroups.removeAll()
+                queryGenres2()
+            case 2:
+                // vote_average
+                movieGroups.removeAll()
+                queryGenres3()
+            default:
+                break
+            }
     }
     
     func queryGenres() {
         for genre in genres {
             let movies = dbMemory.queryMoviesByGenre(genre: genre)
+            movieGroups.append(movies)
+        }
+        
+        movieGroupTableView.reloadData()
+    }
+    
+    func queryGenres2() {
+        for genre in genres {
+            let movies = dbMemory.queryMoviesByGenre2(genre: genre)
+            movieGroups.append(movies)
+        }
+        
+        movieGroupTableView.reloadData()
+    }
+    
+    func queryGenres3() {
+        for genre in genres {
+            let movies = dbMemory.queryMoviesByGenre3(genre: genre)
             movieGroups.append(movies)
         }
         

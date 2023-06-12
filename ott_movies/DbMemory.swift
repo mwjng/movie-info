@@ -197,4 +197,24 @@ class DbMemory: Database {
         let top20Movies = Array(sortedMovies.prefix(20))
         return top20Movies
     }
+    
+    func queryMoviesByGenre2(genre: String) -> [Movie] {
+        let filteredMovies = storage.filter { movie in
+            return movie.genres.contains(genre)
+        }
+
+        let sortedMovies = filteredMovies.sorted { $0.vote_count > $1.vote_count }
+        let top20Movies = Array(sortedMovies.prefix(20))
+        return top20Movies
+    }
+    
+    func queryMoviesByGenre3(genre: String) -> [Movie] {
+        let filteredMovies = storage.filter { movie in
+            return movie.genres.contains(genre)
+        }
+
+        let sortedMovies = filteredMovies.sorted { $0.vote_average > $1.vote_average }
+        let top20Movies = Array(sortedMovies.prefix(20))
+        return top20Movies
+    }
 }
