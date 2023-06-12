@@ -33,19 +33,26 @@ class DetailViewController: UIViewController {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd"
                 let dateString = dateFormatter.string(from: releaseDate)
-                etcLabel.text = "\(dateString) | "
+                if let runtime = movie.runtime {
+                    let runtimeString = String(Int(runtime))
+                    etcLabel.text = "\(dateString)  |  \(runtimeString)m"
+                }
+                else {
+                    etcLabel.text = ""
+                }
                     
             } else {
                 etcLabel.text = ""
             }
-            
+            etcLabel.numberOfLines = 0
             let genresString = movie.genres.joined(separator: ", ")
             genreLabel.text = genresString
+            genreLabel.numberOfLines = 0
             scoreLabel.text = String(movie.vote_average)
             
             let companyString = movie.production_companies.joined(separator: ", ")
             companyLabel.text = companyString
-            
+            companyLabel.numberOfLines = 0
             overviewLabel.text = movie.overview
             overviewLabel.numberOfLines = 0
         }
