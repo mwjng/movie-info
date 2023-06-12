@@ -128,7 +128,7 @@ class DbMemory: Database {
                         }
                     }
                     
-                    let movie = Movie(budget: budget, genres: genres, homepage: homepage, id: id, imdb_id: imdb_id, original_language: original_language, original_title: original_title, overview: overview, popularity: popularity, poster_path: poster_path, production_companies: production_companies, production_countries: production_countries, release_date: releaseDate, revenue: revenue, runtime: runtime, spoken_languages: spoken_languages, status: status, tagline: tagline, title: title, vote_average: vote_average, vote_count: vote_count)
+                    let movie = Movie(budget: budget, genres: genres, homepage: homepage, id: id, imdb_id: imdb_id, original_language: original_language, original_title: original_title, overview: overview!, popularity: popularity, poster_path: poster_path, production_companies: production_companies, production_countries: production_countries, release_date: releaseDate, revenue: revenue, runtime: runtime, spoken_languages: spoken_languages, status: status, tagline: tagline, title: title, vote_average: vote_average, vote_count: vote_count)
                     
                     sortedMovies.append(movie)
                 }

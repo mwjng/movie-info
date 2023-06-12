@@ -20,7 +20,37 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let movie = movie {
-            titleLabel.text = movie.title
+            if let releaseDate = movie.release_date {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy"
+                let yearString = dateFormatter.string(from: releaseDate)
+                titleLabel.text = "\(movie.title) (\(yearString))"
+            } else {
+                titleLabel.text = movie.title
+            }
+            
+            if let releaseDate = movie.release_date {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                let dateString = dateFormatter.string(from: releaseDate)
+                etcLabel.text = "\(dateString) | "
+                    
+            } else {
+                etcLabel.text = ""
+            }
+            
+            let genresString = movie.genres.joined(separator: ", ")
+            genreLabel.text = genresString
+            scoreLabel.text = String(movie.vote_average)
+            
+            let companyString = movie.production_companies.joined(separator: ", ")
+            companyLabel.text = companyString
+            
+            overviewLabel.text = movie.overview
+            overviewLabel.numberOfLines = 0
         }
+
+
+
     }
 }

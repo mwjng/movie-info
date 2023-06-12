@@ -15,7 +15,7 @@ class Movie {
     var imdb_id: String?
     var original_language: String
     var original_title: String
-    var overview: String?
+    var overview: String
     var popularity: Double
     var poster_path: String?
     var production_companies: [String]
@@ -30,7 +30,7 @@ class Movie {
     var vote_average: Double
     var vote_count: Int
 
-    init(budget: Int?, genres: [String], homepage: String?, id: Int, imdb_id: String?, original_language: String, original_title: String, overview: String?, popularity: Double, poster_path: String?, production_companies: [String], production_countries: [String], release_date: Date?, revenue: Int?, runtime: Double?, spoken_languages: [String], status: String?, tagline: String?, title: String, vote_average: Double, vote_count: Int) {
+    init(budget: Int?, genres: [String], homepage: String?, id: Int, imdb_id: String?, original_language: String, original_title: String, overview: String, popularity: Double, poster_path: String?, production_companies: [String], production_countries: [String], release_date: Date?, revenue: Int?, runtime: Double?, spoken_languages: [String], status: String?, tagline: String?, title: String, vote_average: Double, vote_count: Int) {
         self.budget = budget
         self.genres = genres
         self.homepage = homepage

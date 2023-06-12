@@ -23,7 +23,7 @@ class MovieGroupViewController: UIViewController {
         movieGroupTableView.delegate = self
         
     }
-            
+    
     func queryGenres() {
         for genre in genres {
             let movies = dbMemory.queryMoviesByGenre(genre: genre)
@@ -80,6 +80,13 @@ extension MovieGroupViewController: UICollectionViewDataSource, UICollectionView
         return CGSize(width: width, height: height)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedMovie = movieGroups[collectionView.tag][indexPath.item]
+        if let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
+            detailVC.movie = selectedMovie
+            navigationController?.show(detailVC, sender: self)
+        }
+    }
 }
 
 class GenreTableViewCell: UITableViewCell {
