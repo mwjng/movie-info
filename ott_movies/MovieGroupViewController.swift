@@ -53,7 +53,7 @@ extension MovieGroupViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
         cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.section)
-        cell.textLabel!.text = genres[indexPath.section]
+        cell.genreLabel!.text = genres[indexPath.section]
         
         return cell
     }
@@ -91,6 +91,7 @@ extension MovieGroupViewController: UICollectionViewDataSource, UICollectionView
 
 class GenreTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var genreCollectionView: UICollectionView!
     
     var row: Int = 0

@@ -48,6 +48,15 @@ extension SearchViewController: UITableViewDataSource {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedMovie = movies[indexPath.row]
+        if let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
+            detailVC.movie = selectedMovie
+            navigationController?.show(detailVC, sender: self)
+        }
+    }
+
 }
 
 extension SearchViewController: UITableViewDelegate {
