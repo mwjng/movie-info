@@ -119,7 +119,7 @@ extension MovieGroupViewController: UICollectionViewDataSource, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.bounds.width * 0.7
+        let width = collectionView.bounds.width
         let height = collectionView.bounds.height
         return CGSize(width: width, height: height)
     }

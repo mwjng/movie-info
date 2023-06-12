@@ -154,9 +154,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="666"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Lg2-y1-Adm">
-                                <rect key="frame" x="0.0" y="39" width="393" height="607"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Lg2-y1-Adm">
+                                <rect key="frame" x="0.0" y="53" width="393" height="593"/>
                                 <color key="backgroundColor" systemColor="labelColor"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -168,59 +167,55 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5Y9-hk-Czh">
-                                                    <rect key="frame" x="0.0" y="39" width="393" height="460"/>
+                                                    <rect key="frame" x="0.0" y="39" width="393" height="418"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="npi-gd-cbR">
-                                                        <size key="itemSize" width="391" height="279"/>
+                                                        <size key="itemSize" width="391" height="387"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieGroupViewCell" id="XVj-l9-5gk" customClass="MovieGroupViewCell" customModule="ott_movies">
-                                                            <rect key="frame" x="0.0" y="90.666666666666671" width="391" height="279"/>
+                                                            <rect key="frame" x="0.0" y="15.666666666666666" width="391" height="387"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Of4-Lb-4Oy">
-                                                                <rect key="frame" x="0.0" y="0.0" width="391" height="279"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="391" height="387"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="poster_sample.jpg" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l1s-GW-iTG">
+                                                                        <rect key="frame" x="75" y="31" width="241" height="166"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <variation key="heightClass=compact-widthClass=compact" hidden="NO"/>
+                                                                    </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="V25-jM-Gub">
-                                                                        <rect key="frame" x="8" y="209" width="349" height="41"/>
+                                                                        <rect key="frame" x="21" y="205" width="349" height="51"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <color key="textColor" systemColor="systemYellowColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="poster_sample.jpg" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l1s-GW-iTG">
-                                                                        <rect key="frame" x="62" y="29" width="241" height="172"/>
-                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                        <variation key="heightClass=compact-widthClass=compact" hidden="NO"/>
-                                                                    </imageView>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </collectionViewCellContentView>
-                                                            <size key="customSize" width="391" height="279"/>
+                                                            <size key="customSize" width="391" height="387"/>
                                                             <connections>
                                                                 <outlet property="movieGenreView" destination="V25-jM-Gub" id="Js4-dU-IhP"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NFv-gg-Eg7">
-                                                    <rect key="frame" x="331.66666666666669" y="10.999999999999998" width="41.333333333333314" height="20.333333333333329"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NFv-gg-Eg7">
+                                                    <rect key="frame" x="290" y="11" width="83" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemYellowColor"/>
-                                            <constraints>
-                                                <constraint firstItem="NFv-gg-Eg7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="w0B-Sv-SHJ" secondAttribute="leadingMargin" id="SsA-LF-Hky"/>
-                                                <constraint firstAttribute="trailing" secondItem="NFv-gg-Eg7" secondAttribute="trailing" constant="20" id="acQ-UE-yGS"/>
-                                                <constraint firstItem="NFv-gg-Eg7" firstAttribute="top" secondItem="w0B-Sv-SHJ" secondAttribute="topMargin" id="lpC-BR-YGp"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
@@ -230,9 +225,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fKt-Bd-uPM">
-                                <rect key="frame" x="49" y="0.0" width="296" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fKt-Bd-uPM">
+                                <rect key="frame" x="49" y="0.0" width="295" height="32"/>
                                 <color key="backgroundColor" red="0.99202360139860135" green="0.94823535839160844" blue="0.56760817307692313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <segments>
                                     <segment title="popularity"/>
@@ -245,6 +239,15 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Lg2-y1-Adm" secondAttribute="bottom" constant="20" id="EXj-92-o3j"/>
+                            <constraint firstItem="Lg2-y1-Adm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HWc-da-pyE"/>
+                            <constraint firstItem="Lg2-y1-Adm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Wy4-Rg-G9a"/>
+                            <constraint firstItem="fKt-Bd-uPM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="aCE-sd-X5X"/>
+                            <constraint firstItem="fKt-Bd-uPM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="49" id="dct-sh-JOW"/>
+                            <constraint firstItem="fKt-Bd-uPM" firstAttribute="centerX" secondItem="Lg2-y1-Adm" secondAttribute="centerX" id="lEw-D9-KKy"/>
+                            <constraint firstItem="Lg2-y1-Adm" firstAttribute="top" secondItem="fKt-Bd-uPM" secondAttribute="bottom" constant="22" id="mhs-bc-4qh"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Main" id="k1w-f1-SNM"/>
                     <connections>
