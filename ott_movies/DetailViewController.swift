@@ -8,6 +8,7 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    @IBOutlet weak var naviItem: UINavigationItem!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var etcLabel: UILabel!
     @IBOutlet weak var genreLabel: UILabel!
@@ -59,6 +60,7 @@ class DetailViewController: UIViewController {
             overviewLabel.numberOfLines = 0
         }
         
+        naviItem.title = movie?.title
         getReviews()
     }
     
@@ -125,8 +127,6 @@ extension DetailViewController: UITableViewDataSource {
         cell!.ratingLabel.text = comment.rating
         cell!.reviewLabel.text = comment.content
         cell!.reviewLabel.numberOfLines = 0
-        let labelHeight = cell!.reviewLabel.sizeThatFits(CGSize(width: cell!.reviewLabel.frame.width, height: CGFloat.greatestFiniteMagnitude)).height
-        cell!.reviewLabel.frame.size.height = labelHeight
         return cell!
     }
 }
@@ -144,7 +144,7 @@ class CommentTableViewCell: UITableViewCell{
         contentView.layer.addSublayer(topLine)
 
         let bottomLine = CALayer()
-        bottomLine.frame = CGRect(x: 0, y: contentView.frame.height - 1, width: contentView.frame.width, height: 1)
+        bottomLine.frame = CGRect(x: 0, y: contentView.frame.height-1, width: contentView.frame.width, height: 1)
         bottomLine.backgroundColor = UIColor.lightGray.cgColor
         contentView.layer.addSublayer(bottomLine)
     }

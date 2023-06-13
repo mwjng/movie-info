@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C77ACAE2A3839CF003BEB0C /* links.csv in Resources */ = {isa = PBXBuildFile; fileRef = 0C77ACAD2A3839CF003BEB0C /* links.csv */; };
 		0C77ACB02A386738003BEB0C /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C77ACAF2A386738003BEB0C /* Comment.swift */; };
+		0C77ACB22A38D082003BEB0C /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C77ACB12A38D082003BEB0C /* RatingViewController.swift */; };
 		0C8EADB12A3611860023C55F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8EADB02A3611860023C55F /* DetailViewController.swift */; };
 		0CB57D4F2A2F9A1F006EF06A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB57D4E2A2F9A1F006EF06A /* AppDelegate.swift */; };
 		0CB57D512A2F9A1F006EF06A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB57D502A2F9A1F006EF06A /* SceneDelegate.swift */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		0C77ACAD2A3839CF003BEB0C /* links.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = links.csv; sourceTree = "<group>"; };
 		0C77ACAF2A386738003BEB0C /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		0C77ACB12A38D082003BEB0C /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
 		0C8EADB02A3611860023C55F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		0CB57D4B2A2F9A1F006EF06A /* ott_movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ott_movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CB57D4E2A2F9A1F006EF06A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				0CF888792A34B4CF00207B61 /* TabBarController.swift */,
 				0CF8887B2A34B50300207B61 /* SearchViewController.swift */,
 				0C8EADB02A3611860023C55F /* DetailViewController.swift */,
+				0C77ACB12A38D082003BEB0C /* RatingViewController.swift */,
 				0CB57D542A2F9A1F006EF06A /* Main.storyboard */,
 				0CB57D572A2F9A20006EF06A /* Assets.xcassets */,
 				0CB57D592A2F9A20006EF06A /* LaunchScreen.storyboard */,
@@ -180,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C8EADB12A3611860023C55F /* DetailViewController.swift in Sources */,
+				0C77ACB22A38D082003BEB0C /* RatingViewController.swift in Sources */,
 				0CF8886F2A326C3200207B61 /* Database.swift in Sources */,
 				0CF8887A2A34B4CF00207B61 /* TabBarController.swift in Sources */,
 				0CB57D532A2F9A1F006EF06A /* MovieGroupViewController.swift in Sources */,

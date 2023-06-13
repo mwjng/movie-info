@@ -30,7 +30,6 @@ extension SearchViewController: UISearchBarDelegate {
         }
         
         movies = dbMemory.queryMoviesByTitle(title: searchText) ?? []
-        
         tableView.reloadData()
     }
 }
@@ -47,7 +46,6 @@ extension SearchViewController: UITableViewDataSource {
         cell!.idLabel!.text = String(movie.id)
         cell!.overviewLabel!.text = movie.overview
         cell!.overviewLabel.numberOfLines = 0
-        
         return cell!
     }
     
