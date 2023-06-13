@@ -42,8 +42,13 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="wxk-f7-irj"/>
                                 </constraints>
+                                <color key="tintColor" systemColor="systemYellowColor"/>
                                 <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
                                 <connections>
                                     <outlet property="delegate" destination="z41-Vw-7yY" id="dZh-0c-f5f"/>
                                 </connections>
@@ -146,7 +151,7 @@
             </objects>
             <point key="canvasLocation" x="168.70229007633588" y="202.81690140845072"/>
         </scene>
-        <!--Main-->
+        <!--Top 20-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MovieGroupViewController" customModule="ott_movies" sceneMemberID="viewController">
@@ -249,7 +254,7 @@
                             <constraint firstItem="Lg2-y1-Adm" firstAttribute="top" secondItem="fKt-Bd-uPM" secondAttribute="bottom" constant="22" id="mhs-bc-4qh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Main" id="k1w-f1-SNM"/>
+                    <navigationItem key="navigationItem" title="Top 20" id="k1w-f1-SNM"/>
                     <connections>
                         <outlet property="movieGroupTableView" destination="Lg2-y1-Adm" id="kuB-FX-qOK"/>
                         <outlet property="sortSegment" destination="fKt-Bd-uPM" id="D06-1m-7aU"/>
