@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class RatingViewController: UIViewController {
+    @IBOutlet weak var msgLabel: UILabel!
     @IBOutlet weak var ratingNavi: UINavigationItem!
     var id: String?
     var rating: Int = 0
@@ -45,6 +46,7 @@ class RatingViewController: UIViewController {
     @objc func starTapped(_ sender: UIButton) {
         let selectedStars = sender.tag + 1
         updateRating(selectedStars)
+        updateMessage(selectedStars)
     }
     
     func updateRating(_ stars: Int) {
@@ -52,6 +54,23 @@ class RatingViewController: UIViewController {
             starButton.isSelected = index < stars
         }
         rating = stars
+    }
+    
+    func updateMessage(_ stars: Int) {
+        switch stars {
+        case 1:
+            msgLabel.text = "Very Poor..."
+        case 2:
+            msgLabel.text = "Poor.."
+        case 3:
+            msgLabel.text = "Average"
+        case 4:
+            msgLabel.text = "Good!"
+        case 5:
+            msgLabel.text = "Excellent!!"
+        default:
+            msgLabel.text = ""
+        }
     }
     
     @objc func confirmTapped() {
