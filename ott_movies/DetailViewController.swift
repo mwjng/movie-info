@@ -62,6 +62,7 @@ class DetailViewController: UIViewController {
         
         naviItem.title = movie?.title
         getReviews()
+        setupRightBar()
     }
     
     func getReviews() {
@@ -110,6 +111,19 @@ class DetailViewController: UIViewController {
             dataTask.resume()
         }
         
+    }
+    
+    func setupRightBar() {
+        let rightBarButton = UIBarButtonItem(title: "Add Rating", style: .plain, target: self, action: #selector(ratingTapped))
+        navigationItem.rightBarButtonItem = rightBarButton
+    }
+
+    @objc func ratingTapped() {
+        if let movieId = movie?.id {
+            let ratingViewController = storyboard?.instantiateViewController(withIdentifier: "RatingViewController") as! RatingViewController
+            ratingViewController.id = String(movieId)
+            navigationController?.show(ratingViewController, sender: self)
+        }
     }
 }
 

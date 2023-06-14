@@ -474,9 +474,6 @@
                     <navigationItem key="navigationItem" id="Iva-oy-Egy">
                         <barButtonItem key="rightBarButtonItem" title="Add Rating" id="Ggc-JC-juq">
                             <color key="tintColor" systemColor="systemYellowColor"/>
-                            <connections>
-                                <segue destination="nYz-X1-8YA" kind="show" id="x68-wO-QrV"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -497,13 +494,13 @@
         <!--Rating-->
         <scene sceneID="SmV-Yk-NbA">
             <objects>
-                <viewController id="nYz-X1-8YA" customClass="RatingViewController" customModule="ott_movies" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RatingViewController" id="nYz-X1-8YA" customClass="RatingViewController" customModule="ott_movies" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SJJ-VJ-oTK">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 points per star" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJD-L6-KE5">
-                                <rect key="frame" x="52" y="171" width="289" height="15.666666666666657"/>
+                                <rect key="frame" x="52" y="230" width="289" height="15.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -523,6 +520,9 @@
                             <color key="tintColor" systemColor="systemYellowColor"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="ratingNavi" destination="jPD-PE-Pfa" id="MSM-Na-R6x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YPW-Ep-GPD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

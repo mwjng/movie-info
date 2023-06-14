@@ -13,5 +13,9 @@ enum DbAction{
 
 protocol Database {   
     func queryMovie(count: Int)
+    func queryMoviesByTitle(title: String) -> [Movie]?
     func saveChange(movie: Movie, action: DbAction)
+    func queryMoviesByGenre(genre: String) -> [Movie]
+    func queryMoviesByGenre2(genre: String) -> [Movie]
+    func queryMoviesByGenre3(genre: String) -> [Movie]
 }
