@@ -187,6 +187,11 @@ class DbMemory: Database {
         let findMovies = Array(sortedMovies.prefix(100))
         return findMovies.isEmpty ? nil : findMovies
     }
+    
+    func queryMovieByTitle(title: String) -> Movie {
+        let filteredMovie = storage.filter { $0.title == title }
+        return filteredMovie.first!
+    }
 
     func queryMoviesByGenre(genre: String) -> [Movie] {
         let filteredMovies = storage.filter { movie in
@@ -216,5 +221,22 @@ class DbMemory: Database {
         let sortedMovies = filteredMovies.sorted { $0.vote_average > $1.vote_average }
         let top20Movies = Array(sortedMovies.prefix(20))
         return top20Movies
+    }
+    
+    func queryAllMoviesByGenre(genres: [String]) -> [Movie] {
+        var filteredMovies: [Movie] = []
+        for genre in genres {
+            let movies = storage.filter { movie in
+                return movie.genres.contains(genre)
+            }
+            filteredMovies += movies
+        }
+        var uniqueMovies: [Movie] = []
+        for movie in filteredMovies {
+            if !uniqueMovies.contains(where: { $0.id == movie.id }) {
+                uniqueMovies.append(movie)
+            }
+        }
+        return uniqueMovies
     }
 }

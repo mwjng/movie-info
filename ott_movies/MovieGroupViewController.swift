@@ -119,7 +119,7 @@ extension MovieGroupViewController: UICollectionViewDataSource, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.bounds.width
+        let width = collectionView.bounds.width - 250
         let height = collectionView.bounds.height
         return CGSize(width: width, height: height)
     }
@@ -137,24 +137,7 @@ class GenreTableViewCell: UITableViewCell {
     
     @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var genreCollectionView: UICollectionView!
-    
     var row: Int = 0
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        configureCollectionView()
-    }
-    
-    private func configureCollectionView() {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 10
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-        genreCollectionView.collectionViewLayout = layout
-        
-        genreCollectionView.showsHorizontalScrollIndicator = false
-        
-    }
     
     func setCollectionViewDataSourceDelegate(dataSourceDelegate: UICollectionViewDataSource & UICollectionViewDelegateFlowLayout, forRow row: Int) {
         self.row = row

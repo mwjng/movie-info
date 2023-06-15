@@ -15,13 +15,18 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var companyLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
+    @IBOutlet weak var recommendCollectionView: UICollectionView!
     @IBOutlet weak var commentTableView: UITableView!
     var movie: Movie?
     var comments: [Comment] = []
+    var recommendAll: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         commentTableView.dataSource = self
+        recommendCollectionView.dataSource = self
+        recommendCollectionView.delegate = self
+        
         if let movie = movie {
             if let releaseDate = movie.release_date {
                 let dateFormatter = DateFormatter()
@@ -59,7 +64,7 @@ class DetailViewController: UIViewController {
             overviewLabel.text = movie.overview
             overviewLabel.numberOfLines = 0
         }
-        
+        recommendAll = recommendMovies()
         naviItem.title = movie?.title
         getReviews()
         setupRightBar()
@@ -125,6 +130,58 @@ class DetailViewController: UIViewController {
             navigationController?.show(ratingViewController, sender: self)
         }
     }
+    
+    func recommendMovies() -> [String] {
+        var similarMovies = DbMemory.shared.queryAllMoviesByGenre(genres: movie!.genres)
+        similarMovies.removeAll { $0.title == movie?.title }
+
+        let sortedMovies = similarMovies.sorted{(movie1, movie2) -> Bool in
+            let similarity1 = cosineSimilarity(movie!.overview, movie1.overview)
+            let similarity2 = cosineSimilarity(movie!.overview, movie2.overview)
+            return similarity1 > similarity2
+        }
+        let recommendMovies = Array(sortedMovies.prefix(10)).map { $0.title }
+        return recommendMovies
+    }
+    
+    func cosineSimilarity(_ string1: String, _ string2: String) -> Double {
+        let string1Vector = stringToVector(string1)
+        let string2Vector = stringToVector(string2)
+        
+        let dotProduct = calculateDotProduct(string1Vector, string2Vector)
+        let magnitudeProduct = calculateMagnitude(string1Vector) * calculateMagnitude(string2Vector)
+        
+        return dotProduct / magnitudeProduct
+    }
+
+    private func stringToVector(_ string: String) -> [Double] {
+        var vector: [Double] = Array(repeating: 0.0, count: 26)
+        for character in string.lowercased() {
+            if let asciiValue = character.asciiValue {
+                let index = Int(asciiValue) - Int(UnicodeScalar("a").value)
+                if index >= 0 && index < 26 {
+                    vector[index] += 1.0
+                }
+            }
+        }
+        return vector
+    }
+
+    private func calculateDotProduct(_ vector1: [Double], _ vector2: [Double]) -> Double {
+        var dotProduct: Double = 0.0
+        for i in 0..<vector1.count {
+            dotProduct += vector1[i] * vector2[i]
+        }
+        return dotProduct
+    }
+
+    private func calculateMagnitude(_ vector: [Double]) -> Double {
+        var sumOfSquares: Double = 0.0
+        for value in vector {
+            sumOfSquares += value * value
+        }
+        return sqrt(sumOfSquares)
+    }
 }
 
 extension DetailViewController: UITableViewDataSource {
@@ -145,6 +202,35 @@ extension DetailViewController: UITableViewDataSource {
     }
 }
 
+extension DetailViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return recommendAll.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? CollectionViewCell
+        let movie = recommendAll[indexPath.row]
+        cell!.recommendLabel.text = movie
+        cell!.posterImg.frame = CGRect(x: 0.0, y: 8, width: 100, height: 100)
+        return cell!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cellWidth = collectionView.bounds.width - 300
+        let cellHeight = collectionView.bounds.height
+        return CGSize(width: cellWidth, height: cellHeight)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedMovie = recommendAll[indexPath.item]
+        let movieDetail = DbMemory.shared.queryMovieByTitle(title: selectedMovie)
+        if let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
+            detailVC.movie = movieDetail
+            navigationController?.show(detailVC, sender: self)
+        }
+    }
+}
+
 class CommentTableViewCell: UITableViewCell{
     @IBOutlet weak var reviewLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
@@ -156,10 +242,10 @@ class CommentTableViewCell: UITableViewCell{
         topLine.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: 1)
         topLine.backgroundColor = UIColor.lightGray.cgColor
         contentView.layer.addSublayer(topLine)
-
-        let bottomLine = CALayer()
-        bottomLine.frame = CGRect(x: 0, y: contentView.frame.height-1, width: contentView.frame.width, height: 1)
-        bottomLine.backgroundColor = UIColor.lightGray.cgColor
-        contentView.layer.addSublayer(bottomLine)
     }
+}
+
+class CollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var posterImg: UIImageView!
+    @IBOutlet weak var recommendLabel: UILabel!
 }
